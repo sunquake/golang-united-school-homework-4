@@ -29,30 +29,24 @@ var (
 func StringSum(input string) (output string, err error) {
 	in := strings.ReplaceAll(input," ","")
 	if in == "" {
-		err = errorEmptyInput
+		err = fmt.Errorf("Error: %w", errorEmptyInput)
 		return
-	}
-	for _, v := range in {
-		if v != '+' && v != '-' && !unicode.IsNumber(v) {
-			err = fmt.Errorf("not a valid input")
-			return
-		}	
-	}
+	}	
 	in = strings.ReplaceAll(in,"+"," +")
 	in = strings.ReplaceAll(in,"-"," -")
 	oper := strings.Fields(in)
 	if len(oper) != 2 {
-		err = errorNotTwoOperands
+		err = fmt.Errorf("Error: %w", errorNotTwoOperands)
 		return
 	}
 	s1, er1 := strconv.Atoi(oper[0])
 	if er1 != nil {
-		err = er1
+		err = fmt.Errorf("Error: %w", er1)
 		return
 	}
 	s2, er2 :=strconv.Atoi(oper[1])
 	if er2 != nil {
-		err = er2
+		err = fmt.Errorf("Error: %w", er2)
 		return
 	}
 	output = strconv.Itoa(s1+s2)
