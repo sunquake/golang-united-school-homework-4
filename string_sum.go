@@ -29,13 +29,13 @@ var (
 func StringSum(input string) (output string, err error) {
 	in := strings.ReplaceAll(input," ","")
 	if in == "" {return "", errorEmptyInput}
-	in = strings.ReplaceAll(in,"+"," +")
-	in = strings.ReplaceAll(in,"-"," -")
 	for _, v := range in {
 		if v != '+' && v != '-' && !unicode.IsNumber(v) {
 			return "", fmt.Errorf("not a valid input")
 		}	
 	}
+	in = strings.ReplaceAll(in,"+"," +")
+	in = strings.ReplaceAll(in,"-"," -")
 	oper := strings.Fields(in)
 	if len(oper) != 2 {return "", errorNotTwoOperands}
 	s1, er1 :=strconv.Atoi(oper[0])
