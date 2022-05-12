@@ -31,7 +31,7 @@ func StringSum(input string) (output string, err error) {
 		err = fmt.Errorf("Error: %w", errorEmptyInput)
 		return
 	}	
-	in = strings.ReplaceAll(in,"+"," +")
+	in = strings.ReplaceAll(in,"+"," ")
 	in = strings.ReplaceAll(in,"-"," -")
 	oper := strings.Fields(in)
 	if len(oper) != 2 {
